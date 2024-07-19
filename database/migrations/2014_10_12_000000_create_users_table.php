@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('phone')->unique();
+            $table->boolean('isadmin')->default(0);
+            $table->boolean('isuser')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,6 +30,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        schema::table('user', function(Blueprint $table){
+            $table->dropForeign(['article_id','role_id']);
+        });
         Schema::dropIfExists('users');
     }
 };
