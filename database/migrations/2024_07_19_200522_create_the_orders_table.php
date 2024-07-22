@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('the_orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_cart_id');
+            $table->foreignId('order_status_id');
+            $table->foreignId('shipping_methos_id');
             $table->timestamps();
+
+            $table->foreign('order_cart_id')->references('id')->on('order_carts');
+            $table->foreign('order_status_id')->references('id')->on('order_statuses');
+            $table->foreign('shipping_methos_id')->references('id')->on('shipping_methods');
         });
     }
 

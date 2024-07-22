@@ -41,4 +41,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function payment_types(){
+        return $this->belongsToMany(payment_type::class,'user_payment_types','usert_id','payment_type_id');
+    }
+
+    public function reviews(){
+        return $this->hasMany(review::class,'user_id','id');
+    }
+
+    public function favorit_cart(){
+        return $this->hasOne(favorit_cart::class,'user_id','id');
+    }
+
+    public function order_cart(){
+        return $this->hasOne(order_cart::class,'user_id','id');
+    }
+
+    public function addresses(){
+        return $this->belongsToMany(addresse::class,'user_addresses','user_id','address_id');
+    }
+
+    
 }

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('product_name');
             $table->text('product_description');
             $table->string('image')->nullable(); // in case there is more then one image it required to create image table and it in relation with this table
+            $table->foreignId('product_category_id');
             $table->timestamps();
+
+            $table->foreign('product_category_id')->references('id')->on('product_categoris');
         });
     }
 

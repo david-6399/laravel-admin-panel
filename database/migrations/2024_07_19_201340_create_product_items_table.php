@@ -17,7 +17,10 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('unit_price');
             $table->string('image'); // in case there is more then one image it required to create image table and it in relation with this table
+            $table->foreignId('product_id');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

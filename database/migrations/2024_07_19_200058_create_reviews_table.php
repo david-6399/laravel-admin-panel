@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->integer('rating_value')->default(0);
             $table->text('comment');
+            $table->foreignId('user_id');
+            $table->foreignId('product_item_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('product_item_id')->references('id')->on('product_items');
         });
     }
 

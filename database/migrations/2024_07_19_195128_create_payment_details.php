@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('account_number')->nullable();
             $table->string('account_name')->nullable();
             $table->string('addresse_détails')->nullable();
+            $table->foreignId('payment_type_id');
             $table->timestamps();
+
+            $table->foreign('payment_type_id')->references('id')->on('payment_types');
         });
     }
 

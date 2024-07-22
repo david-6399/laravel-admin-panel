@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('proùotion_name');
+            $table->string('promotion_name');
             $table->text('promotion_description');
             $table->integer('discount_rate');
-            $table->datetimes('start_date');
-            $table->datetimes('end_date');
+            $table->date('start');
+            $table->date('end');
+            $table->foreignId('product_id');
+            $table->foreignId('product_category_id');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_category_id')->references('id')->on('product_categories');
         });
     }
 
