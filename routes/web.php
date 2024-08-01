@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.app');
-});
-Route::get('/content', function () {
-    return view('content');
-});
+})->middleware('auth');
+
+
 
 Auth::routes();
 

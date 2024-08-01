@@ -20,7 +20,6 @@
         @include('layouts.sidebar')
 
 
-
         <div class="content-wrapper">
             <div class="content">
                 <div class="container-fluid">
@@ -45,16 +44,21 @@
 
                     {{-- <div class="card card-widget widget-user shadow"> --}}
 
-                        <div class="widget-user-header ">
-                            <h3 class="widget-user-username">Alexander Pierce</h3>
-                            <h5 class="widget-user-desc">Founder &amp; CEO</h5>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-block btn-outline-danger btn-sm" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                    <div class="widget-user-header ">
+                        <h3 class="widget-user-username">Alexander Pierce</h3>
+                        <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-block btn-outline-danger btn-sm"
+                            href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}</button>
-                        </div>
+                            {{ __('Logout') }}
+                        </button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
 
                 </div>
 
@@ -76,6 +80,7 @@
 
 
     <script src="{{ asset('build/assets/app-51983030.js') }}"></script>
+    @include('sweetalert::alert')
 </body>
 
 </html>
